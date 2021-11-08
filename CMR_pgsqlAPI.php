@@ -31,7 +31,7 @@ if(isset($_POST['functionname']))
 
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
-    $aResult = seachCity($paPDO, $paSRID, $name);
+    $aResult = searchCity($paPDO, $paSRID, $name);
     echo $aResult;
 }
     
@@ -70,7 +70,7 @@ function closeDB($paPDO)
         // Ngắt kết nối
         $paPDO = null;
     }
-function seachCity($paPDO, $paSRID, $name)
+function searchCity($paPDO, $paSRID, $name)
     {
 
         $mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"gadm36_vnm_1\" where name_1 like '%$name%'";
@@ -103,7 +103,7 @@ function getGeoCMRToAjax($paPDO,$paSRID,$paPoint)
 function getInfoCMRToAjax($paPDO,$paSRID,$paPoint)
     {
         $paPoint = str_replace(',', ' ', $paPoint);
-        $mySQLStr = "SELECT type_1, name_1, infected, active, recovered, deaths from \"gadm36_vnm_1\" where ST_Within('SRID=".$paSRID.";".$paPoint."'::geometry,geom)";
+        $mySQLStr = "SELECT type_1, name_1, infected, active, recovered, death from \"gadm36_vnm_1\" where ST_Within('SRID=".$paSRID.";".$paPoint."'::geometry,geom)";
         $result = query($paPDO, $mySQLStr);
         
         if ($result != null)
@@ -115,7 +115,7 @@ function getInfoCMRToAjax($paPDO,$paSRID,$paPoint)
                 $resFin = $resFin.'<tr><td>Số ca nhiễm: '.$item['infected'].'</td></tr>';
                 $resFin = $resFin.'<tr><td>Đang điều trị: '.$item['active'].'</td></tr>';
                 $resFin = $resFin.'<tr><td>Hồi phục: '.$item['recovered'].'</td></tr>';
-                $resFin = $resFin.'<tr><td>Tử vong: '.$item['deaths'].'</td></tr>';
+                $resFin = $resFin.'<tr><td>Tử vong: '.$item['death'].'</td></tr>';
                 break;
             }
             $resFin = $resFin.'</table>';

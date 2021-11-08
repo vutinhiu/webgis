@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+                       xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml"
+                       xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>Covid vn</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <Title>1-99</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsLessThan>
+              <ogc:PropertyName>infected</ogc:PropertyName>
+              <ogc:Literal>99</ogc:Literal>
+            </ogc:PropertyIsLessThan>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <!-- CssParameters allowed are fill (the color) and fill-opacity -->
+              <CssParameter name="fill">#33cc33</CssParameter>
+              <CssParameter name="fill-opacity">1.0</CssParameter>
+            </Fill>     
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>100 - 999</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsBetween>
+              <ogc:PropertyName>infected</ogc:PropertyName>
+              <ogc:LowerBoundary>
+                <ogc:Literal>100</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>999</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <!-- CssParameters allowed are fill (the color) and fill-opacity -->
+              <CssParameter name="fill">#c2f0c2</CssParameter>
+              <CssParameter name="fill-opacity">1.0</CssParameter>
+            </Fill>     
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>1000 - 9999</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsBetween>
+              <ogc:PropertyName>infected</ogc:PropertyName>
+              <ogc:LowerBoundary>
+                <ogc:Literal>100</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>999</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <!-- CssParameters allowed are fill (the color) and fill-opacity -->
+              <CssParameter name="fill">#ffd6cc</CssParameter>
+              <CssParameter name="fill-opacity">1.0</CssParameter>
+            </Fill>     
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>10000 - 99.999</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsBetween>
+              <ogc:PropertyName>infected</ogc:PropertyName>
+              <ogc:LowerBoundary>
+                <ogc:Literal>1000</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>10000</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <!-- CssParameters allowed are fill (the color) and fill-opacity -->
+              <CssParameter name="fill">#ff5c33</CssParameter>
+              <CssParameter name="fill-opacity">1.0</CssParameter>
+            </Fill>     
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>&gt; 100.000</Title>
+          <!-- like a linesymbolizer but with a fill too -->
+          <ogc:Filter>
+            <ogc:PropertyIsGreaterThan>
+              <ogc:PropertyName>infected</ogc:PropertyName>
+              <ogc:Literal>10000</ogc:Literal>
+            </ogc:PropertyIsGreaterThan>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <!-- CssParameters allowed are fill (the color) and fill-opacity -->
+              <CssParameter name="fill">#991f00</CssParameter>
+              <CssParameter name="fill-opacity">1.0</CssParameter>
+            </Fill>     
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Boundary</Title>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke-width">0.2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
